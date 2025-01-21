@@ -1,0 +1,55 @@
+le pid est 0 
+18 
+prend exemple fils mon pid est 29017
+ 0
+fd : 3
+ad : ls
+first commad : ls
+pid : 23793
+fd : 3
+x-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+ ENV 0 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64
+cmdfir : ls
+
+ ENV 1 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin
+cmdfir : ls
+
+ ENV 2 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin
+cmdfir : ls
+
+ ENV 3 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin
+cmdfir : ls
+
+ ENV 4 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin
+cmdfir : ls
+
+ ENV 5 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+cmdfir : ls
+
+ ENV 6 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin
+cmdfir : ls
+
+ ENV 7 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+cmdfir : ls
+
+ ENV 8 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+cmdfir : ls
+
+ ENV 9 = /home/lloginov/Downloads/code-stable-x64-1706696875/VSCode-linux-x64:/home/lloginov/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+cmdfir : ls
+Erorr : m=path ma bite
+first commad : ls
+first commad : ls
+pid : 0
+fd : 3
+le pid est 0 
+first commad : ls
+first commad : ls
+pid : 0
+fd : 3
+le pid est 0 
+rst commad : ls
+pid : 21737
+fd : 3
+le pid est 21737 
