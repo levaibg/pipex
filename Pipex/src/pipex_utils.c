@@ -95,24 +95,21 @@ char  *find_env(char **env, t_pipex *p_pipex, char *cmd)
 		if(ft_strcmp2(env[j], "PATH=", p_pipex) == 0)
 		{
 			p_pipex->env_siz = env[j] + 5;
-			printf("voici ppex %s\n", p_pipex->env_siz);
+			// printf("voici ppex %s\n", p_pipex->env_siz);
 		}
 		j++;
 	}
 	char **res;
 	res = ft_split(p_pipex->env_siz, ':');
-	printf("res : %s\n" , res[4]);
+	// printf("res : %s\n" , res[4]);
 	
 	while(res[i])
 	{
 		path = ft_strjoin(res[i], "/");
 		exec = ft_strjoin(path, cmd);
 		free(path);
-		printf("exec : %s\n", exec);
 		if(access(exec, F_OK | X_OK) == 0)
 		{
-			printf("GGGGGGGGGGGGGGGGGG\n");
-			free(exec);
 			free(res);
 			return(exec);
 		}

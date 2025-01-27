@@ -62,8 +62,8 @@ void	innit_cmds(char **av, t_pipex *p_pipex);
 int	ft_strlen(const char *str);
 char	*ft_strjoin( char *s1,  char *s2);
 char	*ft_strdup(const char *src);
-void	exec_pere(char **av, t_pipex *p_pipex, char **env);
-void	exec_fils(char **av, t_pipex *p_pipex, char **env);
+void	exec_pere(char **av, t_pipex *p_pipex, char **env, int *fd);
+void	exec_fils(char **av, t_pipex *p_pipex, char **env, int *fd);
 
 
 # endif
