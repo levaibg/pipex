@@ -6,7 +6,7 @@
 /*   By: lloginov <lloginov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:12:13 by lloginov          #+#    #+#             */
-/*   Updated: 2025/01/20 20:21:22 by lloginov         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:02:55 by lloginov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,16 @@ void	ft_innit_pip(t_pipex *p_pipex)
 }
 
 
-void find_env(char **env, t_pipex *p_pipex)
+char  *find_env(char **env, t_pipex *p_pipex, char *cmd)
 {
-	// int i;
-	// int j;
-
-	// // int i;
 	int j;
+	int i;
+	char *path;
+	char *exec;
 
-	// // i = 0;
+	i = 0;
 	j = 0;
-
+	
 	while(env[j])
 	{
 		if(ft_strcmp2(env[j], "PATH=", p_pipex) == 0)
@@ -102,36 +101,24 @@ void find_env(char **env, t_pipex *p_pipex)
 	}
 	char **res;
 	res = ft_split(p_pipex->env_siz, ':');
-	// ft_strjoin(res, p_pipex->cmdfrist);
-	int k = 0;
-	while(1)
+	printf("res : %s\n" , res[4]);
+	
+	while(res[i])
 	{
-		if(access(res[k],R_OK) != -1)
+		path = ft_strjoin(res[i], "/");
+		exec = ft_strjoin(path, cmd);
+		free(path);
+		printf("exec : %s\n", exec);
+		if(access(exec, F_OK | X_OK) == 0)
 		{
-			printf("cbon\n");
-			return;
+			printf("GGGGGGGGGGGGGGGGGG\n");
+			free(exec);
+			free(res);
+			return(exec);
 		}
-		else
-			res[k] = ft_strjoin(res[k], res[k + 1]);
-		if(ft_strcmp(res[k], p_pipex->env_siz) == 0)
-		{
-			printf("Erorr : m=path ma bite\n");
-			return;
-		}
-		while(res[k])
-		{
-			printf("voici res : %s\n", res[k]);
-			k++;
-		}
+		i++;
 	}
-
-
-
-
-
-
-
-
+	return(NULL);
 
 
 	// while(k != 12)

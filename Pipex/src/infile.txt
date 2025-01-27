@@ -1,6 +1,6 @@
 le pid est 0 
-18 
-prend exemple fils mon pid est 29017
+24 
+prend exemple fils mon pid est 72323
  0
 fd : 3
 ad : ls

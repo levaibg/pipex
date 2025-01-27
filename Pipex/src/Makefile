@@ -5,7 +5,6 @@ CFLAGS = -Wall -Wextra  -pthread -Werror -g  #-fsanitize=address
 SRC =  	main.c\
 		pipex.c\
 		pipex_utils.c\
-		splitting.c\
 		split.c\
 		utils2.c\
 

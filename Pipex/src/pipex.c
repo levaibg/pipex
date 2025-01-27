@@ -6,7 +6,7 @@
 /*   By: lloginov <lloginov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:44:07 by lloginov          #+#    #+#             */
-/*   Updated: 2025/01/20 20:14:19 by lloginov         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:02:43 by lloginov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,77 +17,56 @@ int parsing(int ac, char **av, t_pipex *p_pipex)
 	p_pipex->infile = av[1];
 	p_pipex->outfile = av[4];
 	p_pipex->infile = av[1];
-	p_pipex->cmd1 = av[2];
-	p_pipex->cmd2 = av[3];
 	p_pipex->outfile = av[4];
-	innit_cmds(p_pipex);
+	innit_cmds(av, p_pipex);
 	if(access(av[1], R_OK | W_OK) == -1)
 	{
 		printf("no permission for av 1\n");
-		return(1);
+		exit(1);
 	}
 	if(access(av[4], R_OK | W_OK) == -1)
 	{
 		printf("no permission for av4\n");
-		return(1);
+		exit(1);
 	}
 	return(0);
 }
 
-int	pipex(int ac, char **av, t_pipex *p_pipex, pid_t pid)
+void	exec_pere(char **av, t_pipex *p_pipex, char **env)
 {
-	parsing(ac,av, p_pipex);
-	printf("pid : %d\n", pid);
-	// char buffer[1024];
-	(void)ac;
-	int fd;
-	int fd2[2];
-	(void)pid;
-	// int nb_read;
-
-	fd = open("infile.txt", O_RDONLY | O_WRONLY | O_CREAT, 0644);
-	printf("fd : %d\n", fd);
-	if(fd == -1)
+	int i;
+	char *path;
+	i = 0;
+	(void)i;
+	(void)av;
+	path = find_env(env, p_pipex, p_pipex->cmd2[0]);
+	if(path == NULL)
+		printf("cant find commande\n");
+	else
 	{
-		perror("caca");
-		exit(1);
-	}	
-	if(access("infile.txt", R_OK) == -1)
-	{
-		printf("no permission\n");
-		return(1);
-
+		if(execve(path, p_pipex->cmd2, NULL) == -1)
+		{
+			printf("error\n");
+		}
 	}
-	// nb_read = read(fd,buffer, 9);
-	// if(nb_read == -1)
-	// 	return(1);
-	if (pipe(fd2) == -1)
-	{
-		perror("pipe");
-		exit(1);
-	}
-	(void)
-	dup2(fd, STDOUT_FILENO);
-	// read(fd2[0], buffer, 40);
-	close(fd);	
-	printf("le pid est %d \n", pid);
-	// close(fd2[0]);
-	return(0);
+
+		
 }
 
-void	innit_cmds(t_pipex *p_pipex)
+void	exec_fils(char **av, t_pipex *p_pipex, char **env)
+{
+	(void)av;
+	if(find_env(env, p_pipex, p_pipex->cmd1[0]) == NULL)
+		printf("cant find commande\n");
+}
+
+void	innit_cmds(char **av, t_pipex *p_pipex)
 {
 	char **res;
+	char **res2;
 
-	res = ft_split(p_pipex->cmd1, ' ');
-	int i = 0;
-
-	while(res[i])
-	{
-		printf("first commad : %s\n", res[0]);
-		i++;
-	}
-	i = 0;
-	
-	p_pipex->cmdfrist = res[0];
+	res = ft_split(av[2], ' ');
+	p_pipex->cmd1 = res;
+	res2 = ft_split(av[3], ' ');
+	p_pipex->cmd2 = res2;
 }

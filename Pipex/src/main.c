@@ -6,7 +6,7 @@
 /*   By: lloginov <lloginov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:03:53 by lloginov          #+#    #+#             */
-/*   Updated: 2025/01/20 19:54:13 by lloginov         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:09:08 by lloginov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ int main(int ac, char **av, char **env)
 	}
 	parsing(ac,av,&p_pipex);
 	pid = fork();
-	find_env(env, &p_pipex);
-	pipex(ac, av, &p_pipex, pid);
 	if(pid != 0)
-	{	printf("prend exemple fils mon pid est %d\n", getpid());
+	{	
+		printf("prend exemple fils mon pid est %d\n", getpid());
+		exec_pere(av, &p_pipex, env);
 	}
-	// pipex(ac, av, &p_pipex, pid);
+	else
+	{
+		printf("je suis fils\n");
+		exec_fils(av, &p_pipex, env);	
+	}
 	
 	return(0);	
 }

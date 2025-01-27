@@ -6,7 +6,7 @@
 /*   By: lloginov <lloginov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:55:34 by lloginov          #+#    #+#             */
-/*   Updated: 2025/01/20 19:56:40 by lloginov         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:58:29 by lloginov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,38 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+
+int ft_strlen(const char *str)
+{
+	int i;
+
+	i = 0;
+	if(!str)
+		return(0);
+	while(str[i])
+		i++;
+	return(i);
+}
+
+char	*ft_strdup(const char *src)
+{
+	char	*dst;
+	int		i;
+	int		len;
+
+	len = ft_strlen(src);
+	i = 0;
+	dst = (char *)malloc(sizeof(const char) * len + 1);
+	if (!dst)
+		return (NULL);
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
 
 static int	count_words(const char *str, char c)
 {

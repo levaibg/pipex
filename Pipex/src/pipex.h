@@ -6,7 +6,7 @@
 /*   By: lloginov <lloginov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:04:09 by lloginov          #+#    #+#             */
-/*   Updated: 2025/01/20 19:57:07 by lloginov         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:09:08 by lloginov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct t_pipex
 	char *buffer;
 	char *env_siz;
 	char *env_dup;
-	char *cmd1;
-	char *cmd2;
+	char **cmd1;
+	char **cmd2;
 	char *cmdfrist;
 	
 
@@ -53,15 +53,17 @@ int parsing(int ac, char **av, t_pipex *p_pipex);
 
 void	ft_innit_pip(t_pipex *p_pipex);
 void	ft_putstr(char *str);
-void	find_env(char **env, t_pipex *p_pipex);
+char  *find_env(char **env, t_pipex *p_pipex, char *cmd);
 // char *strcmp(char *s1, char *s2);
 
 //split
-char *ft_splitting(char *str, char sep);
 char	**ft_split(const char *s, char c);
-void	innit_cmds(t_pipex *p_pipex);
-int	ft_strlen(char *str);
+void	innit_cmds(char **av, t_pipex *p_pipex);
+int	ft_strlen(const char *str);
 char	*ft_strjoin( char *s1,  char *s2);
+char	*ft_strdup(const char *src);
+void	exec_pere(char **av, t_pipex *p_pipex, char **env);
+void	exec_fils(char **av, t_pipex *p_pipex, char **env);
 
 
 # endif
